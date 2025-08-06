@@ -19,38 +19,40 @@
 
 <body class="bg-gray-100 text-gray-800 font-sans">
   <header class="bg-indigo-800 text-white py-6 shadow-lg">
+
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
       <!-- VER -->
       <h1 class="text-3xl font-bold mb-4 mb:mb-0">Administrador de tareas</h1>
       <nav>
         <ul class="flex gap-6 text-sm md:text-base">
           <li><a href="" class="hover:underline">INICIO</a></li>
-            <li><a href="">AGREGAR TAREAS</a></li>
-            <li><a href="">MIS TAREAS</a></li>
-            <li> <a href="">AYUDA</a></li>
+          <li><a href="">AGREGAR TAREAS</a></li>
+          <li><a href="">MIS TAREAS</a></li>
+          <li> <a href="">AYUDA</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-   <div>
-    <img src="img/crud-.png" alt="imagen de un crud" width="40%" class="w-4/5 rounder shadow-md" >
-  </div> 
+  <div>
+    <img src="img/crud-.png" alt="imagen de un crud" width="40%" class="w-4/5 rounder shadow-md">
+  </div>
 
-  <section>
-    <h2 class="max=w-3xl mx-auto bg-white p-6 mt-8 rounded shadow">Gestion de tareas</h2>
-    <form action="">
+  <section class="w-3xl mx-auto bg-white p-6 mt-8 rounded shadow">
+    <h2 class="text-xl font-semibold mb-4">Gestion de tareas</h2>
+
+    <form action="" class="space-y-4">
 
       <input type="hidden">
 
-      <label for="titulo">Titulo:</label>
-      <input type="text" required>
+      <label for="titulo" class="block font-medium">Titulo:</label>
+      <input type="text"  class="w-full border border-gray-300 rounded px-3 py-2" required>
 
-      <label for="Descripcion">Descripcion</label>
-      <textarea name="descripcion" id=""></textarea>
+      <label for="Descripcion" class="block font-medium">Descripcion</label>
+      <textarea name="descripcion" id="" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
 
-      <label for="prioridad">Prioridad</label>
-      <select name="prioridad" id="prioridad">
+      <label for="prioridad" class="block font-medium">Prioridad</label>
+      <select name="prioridad" id="prioridad" class="w-full border border-gray-300 rounded px-3 py-2">
         <option value="">Seleccionar prioridad</option>
         <option value="alta">Alta</option>
         <option value="media">Media</option>
@@ -58,10 +60,10 @@
       </select>
 
       <label for="fecha-inicio">Fecha de inicio:</label>
-      <input type="date" id="fecha-inicio" name="fecha-inicio">
+      <input type="date" id="fecha-inicio" name="fecha-inicio" class="w-full border border-gray-300 rounded px-3 py-2">
 
-      <label for="fecha-limite">Fecha limite:</label>
-      <input type="date" id="fecha-limite" name="fecha-limite">
+      <label for="fecha-limite" class="block font-medium">Fecha limite:</label>
+      <input type="date" id="fecha-limite" name="fecha-limite" class="w-full border border-gray-300 rounded px-3 py-2">
 
       <label for="estado">Estado</label>
       <select name="estado" id="estado">
@@ -72,32 +74,34 @@
       </select>
 
       <button type="submit" name="" value="agregar">AGREGAR</button>
-
-      <section>
-        <h2>Lista de tareas</h2>
-        <div>
-          <div>
-            <h3>Titulo de ejemplo: </h3>
-
-            <form action="">
-              <input type="hidden" name="id" value="1">
-              <button type="submit" name="accion" value="editar">Editar</button>
-            </form>
-
-            <form action="/tarea">
-              <input type="hidden" name="id" value="1">
-              <button type="submit" name="accion" value="eliminar"
-                onclick="return confirm('Estas seguro de elminar esta tarea?')">Eliminar</button>
-            </form>
-
-          </div>
-        </div>
-      </section>
-      <!-- </form> -->
+    </form>
   </section>
-  </form>
 
-  <footer>
+
+  <section>
+    <h2>Lista de tareas</h2>
+    <div>
+      <div>
+        <h3>Titulo de ejemplo: </h3>
+
+        <form action="">
+          <input type="hidden" name="id" value="1">
+          <button type="submit" name="accion" value="editar">Editar</button>
+        </form>
+
+        <form action="/tarea">
+          <input type="hidden" name="id" value="1">
+          <button type="submit" name="accion" value="eliminar"
+            onclick="return confirm('Estas seguro de elminar esta tarea?')">Eliminar</button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer class="block">
     <p>2025 Taller FRONTEND</p>
     <nav>
       <ul>

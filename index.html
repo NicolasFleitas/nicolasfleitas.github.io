@@ -1,54 +1,102 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>CRUD</title>
-    <link rel="stylesheet" href="css/estilos.css">
-    <script type="text/javascript" src="js/jquery-3.4.0.js"></script>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD - Gestión de Alumnos</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilo personalizado para la fuente Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <!-- jQuery y Font Awesome se mantienen -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body class="container">
+<!-- Se han eliminado las clases de flexbox del body para evitar que el contenido se superponga. -->
+<!-- Ahora el contenido fluirá verticalmente de forma natural. -->
+<body class="bg-gray-100 p-4">
 
+    <!-- Se ha añadido un contenedor para centrar todo el contenido de la página y limitar su ancho. -->
+    <div class="container mx-auto max-w-4xl">
+        <!-- Contenedor principal de la aplicación, usando etiquetas semánticas -->
+        <main class="bg-white shadow-xl rounded-2xl p-8 md:p-12 w-full grid grid-cols-1 md:grid-cols-2 gap-8">
 
-    <div class="jumbotron row ">
-        <h2> Instituto Orzuza <small> Gestión de alumnos </small></h2>
+            <!-- Sección del encabezado y el formulario -->
+            <section>
+                <header>
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-indigo-800 mb-2">
+                        Instituto Orzuza
+                        <span class="block text-xl md:text-2xl font-semibold text-indigo-600 mt-1">Gestión de alumnos</span>
+                    </h1>
+                </header>
+                <hr class="my-4 md:my-6 border-indigo-200">
 
-        <div class="col-md-6">
-            <hr>
-            <p class="modo"> <span class="">+</span>Agregar alumno</p>
-            <form id="alumnos-form">
-                <input class="form-control" type="text" id="nombre" placeholder="Nombre">
-                <input class="form-control" type="email" id="correo" placeholder="Correo del alumno">
-                <input class="form-control" type="number" id="edad" placeholder="edad">
-                <input class="form-control" type="date" id="fecha_ingreso" placeholder="Fecha de ingreso">
-                <br>
-                <input type="submit" class="btn btn-success" value=" Guardar">
-            </form>
-            <br>
-            <br>
-            <div id="numeroAlumnos">
+                <!-- Artículo para el formulario de agregar/editar alumnos -->
+                <article class="mt-8">
+                    <h2 class="text-xl font-bold text-gray-700 mb-4 flex items-center gap-2">
+                        <span class="bg-indigo-500 text-white rounded-full h-6 w-6 flex items-center justify-center font-normal leading-none">+</span>
+                        Agregar alumno
+                    </h2>
+                    <form id="alumnos-form" class="space-y-4">
+                        <label for="nombre" class="sr-only">Nombre</label>
+                        <input class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" id="nombre" placeholder="Nombre" required>
+                        
+                        <label for="correo" class="sr-only">Correo del alumno</label>
+                        <input class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="email" id="correo" placeholder="Correo del alumno" required>
+                        
+                        <label for="edad" class="sr-only">Edad</label>
+                        <input class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="number" id="edad" placeholder="Edad" required>
+                        
+                        <label for="fecha_ingreso" class="sr-only">Fecha de ingreso</label>
+                        <input class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="date" id="fecha_ingreso" placeholder="Fecha de ingreso" required>
 
-            </div>
+                        <button type="submit" class="w-full px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors duration-200">
+                            <i class="fa fa-save mr-2"></i> Guardar
+                        </button>
+                    </form>
+                    
+                    <div id="numeroAlumnos" class="mt-4 text-gray-600 text-sm">
+                        <!-- Aquí se mostrará el número de alumnos -->
+                    </div>
+                </article>
+            </section>
 
-        </div>
+            <!-- Sección de la imagen (comentada en el original, así que la mantengo así) -->
+            <section class="hidden md:flex items-center justify-center">
+                <!-- <img class="w-full h-auto rounded-lg shadow-md" src="alumno.jpg" alt="Imagen de un alumno" /> -->
+            </section>
 
-        <div class="col-md-6">
-            <!-- <img style=" width:100%" src="alumno.jpg" alt="" /> -->
-        </div>
-
+        </main>
+        
+        <!-- Tabla de alumnos fuera del contenedor principal para un diseño más limpio -->
+        <table class="w-full table-auto border-collapse mt-8 shadow-lg rounded-lg overflow-hidden" id="dbAlumnos-list">
+            <!-- El contenido de la tabla se generará dinámicamente -->
+            <thead class="bg-indigo-600 text-white">
+                <tr class="text-left">
+                    <th class="p-4">Nombre</th>
+                    <th class="p-4">Correo</th>
+                    <th class="p-4 hidden md:table-cell">Edad</th>
+                    <th class="p-4 hidden md:table-cell">Fecha de ingreso</th>
+                    <th class="p-4">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se insertarán las filas de la tabla con los datos de los alumnos -->
+            </tbody>
+        </table>
     </div>
-    <div class="mensaje-alerta">
+
+    <!-- Mensaje de alerta flotante -->
+    <div class="fixed bottom-4 right-4 p-4 rounded-lg shadow-lg text-white bg-green-500 hidden" id="mensaje-alerta">
     </div>
 
-    <br>
-    <br>
-    <table class="table" id="dbAlumnos-list">
-
-    </table>
+    <!-- Script de funciones JS -->
+    <script type="text/javascript" src="js/funciones.js"></script>
 
 </body>
-<script type="text/javascript" src="js/funciones.js"></script>
-
 </html>

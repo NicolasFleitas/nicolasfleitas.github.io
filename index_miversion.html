@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Formulario de tareas">
+  <title>CRUD - TAREAS</title>
+  <style>
+    /* body {
+          margin: 0;
+          color: white;
+          font-family: 'Quicksand', sans-serif;
+          background-color: azure
+        } */
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <header class="bg-indigo-800 text-white py-6 shadow-lg">
+
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
+      <!-- VER -->
+      <h1 class="text-3xl font-bold mb-4 mb:mb-0">Administrador de tareas</h1>
+      <nav>
+        <ul class="flex gap-6 text-sm md:text-base">
+          <li><a href="" class="hover:underline">INICIO</a></li>
+          <li><a href="">AGREGAR TAREAS</a></li>
+          <li><a href="">MIS TAREAS</a></li>
+          <li> <a href="">AYUDA</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div>
+    <img src="img/crud-.png" alt="imagen de un crud" width="40%" class="w-4/5 rounder shadow-md">
+  </div>
+
+  <section class="w-3xl mx-auto bg-white p-6 mt-8 rounded shadow">
+    <h2 class="text-xl font-semibold mb-4">Gestion de tareas</h2>
+
+    <form action="" class="space-y-4">
+
+      <input type="hidden">
+
+      <label for="titulo" class="block font-medium">Titulo:</label>
+      <input type="text"  class="w-full border border-gray-300 rounded px-3 py-2" required>
+
+      <label for="Descripcion" class="block font-medium">Descripcion</label>
+      <textarea name="descripcion" id="" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+
+      <label for="prioridad" class="block font-medium">Prioridad</label>
+      <select name="prioridad" id="prioridad" class="w-full border border-gray-300 rounded px-3 py-2">
+        <option value="">Seleccionar prioridad</option>
+        <option value="alta">Alta</option>
+        <option value="media">Media</option>
+        <option value="baja">Baja</option>
+      </select>
+
+      <label for="fecha-inicio">Fecha de inicio:</label>
+      <input type="date" id="fecha-inicio" name="fecha-inicio" class="w-full border border-gray-300 rounded px-3 py-2">
+
+      <label for="fecha-limite" class="block font-medium">Fecha limite:</label>
+      <input type="date" id="fecha-limite" name="fecha-limite" class="w-full border border-gray-300 rounded px-3 py-2">
+
+      <label for="estado">Estado</label>
+      <select name="estado" id="estado">
+        <option value="">Seleccionar estado</option>
+        <option value="pendiente">Pendiente</option>
+        <option value="en_proceso">En proceso</option>
+        <option value="completada">Completada</option>
+      </select>
+
+      <button type="submit" name="" value="agregar">AGREGAR</button>
+    </form>
+  </section>
+
+
+  <section>
+    <h2>Lista de tareas</h2>
+    <div>
+      <div>
+        <h3>Titulo de ejemplo: </h3>
+
+        <form action="">
+          <input type="hidden" name="id" value="1">
+          <button type="submit" name="accion" value="editar">Editar</button>
+        </form>
+
+        <form action="/tarea">
+          <input type="hidden" name="id" value="1">
+          <button type="submit" name="accion" value="eliminar"
+            onclick="return confirm('Estas seguro de elminar esta tarea?')">Eliminar</button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer class="">
+    <p>2025 Taller FRONTEND</p>
+    <nav class="block">
+      <ul>
+        <li><a href="">Politica de privacidad</a></li>
+      </ul>
+      <ul>
+        <li><a href="">Terminos</a></li>
+      </ul>
+      <ul>
+        <li><a href="">Contactos</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+</body>
+
+</html>

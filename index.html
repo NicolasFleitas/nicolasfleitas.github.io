@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Formulario de tareas">
   <title>CRUD - TAREAS</title>
   <style>
-    body {
+    /* body {
           margin: 0;
           color: white;
           font-family: 'Quicksand', sans-serif;
           background-color: azure
-        }
+        } */
   </style>
 </head>
+
 <body>
   <header>
-    
     <h1>Administrador de tareas</h1>
     <nav>
       <ul>
@@ -28,8 +29,75 @@
         </li>
       </ul>
     </nav>
-    <img src="img/bruce2.jpg" alt="un michi" width="40%">
+    <!-- <img src="img/bruce2.jpg" alt="un michi" width="40%"> -->
   </header>
 
+  <!-- <div>
+    <img src="img/crud-.png" alt="imagen de un crud" width="40%">
+  </div>  -->
+
+  <section>
+    <h2>Gestion de tareas</h2>
+    <form action="">
+
+      <input type="hidden">
+
+      <label for="titulo">Titulo:</label>
+      <input type="text" required>
+
+      <label for="Descripcion">Descripcion</label>
+      <textarea name="descripcion" id=""></textarea>
+
+      <label for="prioridad">Prioridad</label>
+      <select name="prioridad" id="prioridad">
+        <option value="">Seleccionar prioridad</option>
+        <option value="alta">Alta</option>
+        <option value="media">Media</option>
+        <option value="baja">Baja</option>
+      </select>
+
+      <label for="fecha-inicio">Fecha de inicio:</label>
+
+      <input type="date" id="fecha-inicio" name="fecha-inicio">
+
+      <label for="fecha-limite">Fecha limite:</label>
+      <input type="date" id="fecha-limite" name="fecha-limite">
+
+      <label for="estado">Estado</label>
+      <select name="estado" id="estado">
+        <option value="">Seleccionar estado</option>
+        <option value="pendiente">Pendiente</option>
+        <option value="en_proceso">En proceso</option>
+        <option value="completada">Completada</option>
+      </select>
+
+      <button type="submit" name="" value="agregar">AGREGAR</button>
+
+      <section>
+        <h2>Lista de tareas</h2>
+        <div>
+          <h3>Titulo de ejemplo: </h3>
+
+          <form action="">
+            <input type="hidden" name="id" value="1">
+            <button type="submit" name="accion" value="editar">Editar</button>
+          </form>
+
+          <form action="/tarea">
+            
+            <input type="hidden" name="id" value="1">
+            <button type="submit" name="accion" value="eliminar">Eliminar</button>
+          </form>
+        </div>
+      </section>
+    </form>
+
+
+
+  </section>
+  </form>
+
+
 </body>
+
 </html>

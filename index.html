@@ -1,102 +1,284 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD - Gestión de Alumnos</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Infografía: Arquitectura del Asistente Pengu</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilo personalizado para la fuente Inter */
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: #FFD166;
+            line-height: 1;
+        }
+        .db-table {
+            border: 2px solid #118AB2;
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .db-relation {
+            position: absolute;
+            border: 1px dashed #FF6B6B;
+            z-index: -1;
+        }
+        .gamify-step {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: 600;
+            color: white;
+            padding: 0.5rem;
         }
     </style>
-    <!-- jQuery y Font Awesome se mantienen -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<body class="text-[#073B4C]">
 
-<!-- Se han eliminado las clases de flexbox del body para evitar que el contenido se superponga. -->
-<!-- Ahora el contenido fluirá verticalmente de forma natural. -->
-<body class="bg-gray-100 p-4">
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#073B4C]">Arquitectura del Asistente de Tareas Pengu</h1>
+            <p class="text-lg text-[#118AB2] mt-2">Una vista visual de la tecnología, el flujo y la lógica del juego.</p>
+        </header>
 
-    <!-- Se ha añadido un contenedor para centrar todo el contenido de la página y limitar su ancho. -->
-    <div class="container mx-auto max-w-4xl">
-        <!-- Contenedor principal de la aplicación, usando etiquetas semánticas -->
-        <main class="bg-white shadow-xl rounded-2xl p-8 md:p-12 w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- Sección del encabezado y el formulario -->
-            <section>
-                <header>
-                    <h1 class="text-3xl md:text-4xl font-extrabold text-indigo-800 mb-2">
-                        Instituto
-                        <span class="block text-xl md:text-2xl font-semibold text-indigo-600 mt-1">Gestión de alumnos</span>
-                    </h1>
-                </header>
-                <hr class="my-4 md:my-6 border-indigo-200">
+            <div class="lg:col-span-3 bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center justify-around gap-8">
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold">🐍 Backend</h3>
+                    <p class="text-lg text-gray-600">Python & Flask</p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold">🎨 Frontend</h3>
+                    <p class="text-lg text-gray-600">HTML, Bootstrap & JS</p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold">💾 Base de Datos</h3>
+                    <p class="text-lg text-gray-600">SQLite</p>
+                </div>
+            </div>
 
-                <!-- Artículo para el formulario de agregar/editar alumnos -->
-                <article class="mt-8">
-                    <h2 class="text-xl font-bold text-gray-700 mb-4 flex items-center gap-2">
-                        <span class="bg-indigo-500 text-white rounded-full h-6 w-6 flex items-center justify-center font-normal leading-none">+</span>
-                        Agregar alumno
-                    </h2>
-                    <form id="alumnos-form" class="space-y-4">
-                        <label for="nombre" class="sr-only">Nombre</label>
-                        <input class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="text" id="nombre" placeholder="Nombre" required>
-                        
-                        <label for="correo" class="sr-only">Correo del alumno</label>
-                        <input class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="email" id="correo" placeholder="Correo del alumno" required>
-                        
-                        <label for="edad" class="sr-only">Edad</label>
-                        <input class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="number" id="edad" placeholder="Edad" required>
-                        
-                        <label for="fecha_ingreso" class="sr-only">Fecha de ingreso</label>
-                        <input class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" type="date" id="fecha_ingreso" placeholder="Fecha de ingreso" required>
-
-                        <button type="submit" class="w-full px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors duration-200">
-                            <i class="fa fa-save mr-2"></i> Guardar
-                        </button>
-                    </form>
-                    
-                    <div id="numeroAlumnos" class="mt-4 text-gray-600 text-sm">
-                        <!-- Aquí se mostrará el número de alumnos -->
+            <div class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold text-center mb-6">El Viaje del Usuario</h2>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-5xl">👤</p>
+                        <h3 class="font-semibold mt-2">Registro</h3>
+                        <p class="text-sm text-gray-500">Crea una cuenta y se le asigna un Pengu.</p>
                     </div>
-                </article>
-            </section>
+                    <div class="flow-arrow transform md:-rotate-90">↓</div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-5xl">🔑</p>
+                        <h3 class="font-semibold mt-2">Login</h3>
+                        <p class="text-sm text-gray-500">Inicia sesión y se crea una sesión de usuario.</p>
+                    </div>
+                    <div class="flow-arrow transform md:-rotate-90">↓</div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-5xl">📝</p>
+                        <h3 class="font-semibold mt-2">Asistente</h3>
+                        <p class="text-sm text-gray-500">Interactúa con el gestor de tareas.</p>
+                    </div>
+                </div>
+            </div>
 
-            <!-- Sección de la imagen (comentada en el original, así que la mantengo así) -->
-            <section class="hidden md:flex items-center justify-center">
-                <!-- <img class="w-full h-auto rounded-lg shadow-md" src="alumno.jpg" alt="Imagen de un alumno" /> -->
-            </section>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold text-center mb-4">La Magia del Backend</h2>
+                <p class="text-center text-gray-600 mb-6">Componentes clave y su rol en el servidor.</p>
+                <div class="chart-container">
+                    <canvas id="backendChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold text-center mb-4">La Experiencia del Frontend</h2>
+                <p class="text-center text-gray-600 mb-6">Cómo se construye la interfaz de usuario.</p>
+                <div class="chart-container">
+                    <canvas id="frontendChart"></canvas>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1 md:col-span-2 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold text-center mb-6">El Corazón de los Datos: SQLite</h2>
+                <div class="relative flex flex-col items-center justify-center gap-8 h-full">
+                    <div class="db-table w-48">
+                        <h4 class="font-bold">users</h4>
+                        <p class="text-sm">ID, email, pass</p>
+                    </div>
+                    <div class="text-2xl text-[#118AB2]">↓</div>
+                    <div class="db-table w-48">
+                        <h4 class="font-bold">user_mascotas</h4>
+                        <p class="text-sm">user_id, mascota_id</p>
+                    </div>
+                     <div class="text-2xl text-[#118AB2]">↓</div>
+                    <div class="flex gap-4">
+                       <div class="db-table w-36">
+                            <h4 class="font-bold">messages</h4>
+                            <p class="text-sm">ID, content, user_id</p>
+                        </div>
+                        <div class="db-table w-36">
+                            <h4 class="font-bold">mascotas</h4>
+                            <p class="text-sm">ID, vidas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold text-center mb-6">El Círculo de la Gamificación</h2>
+                <div class="relative flex flex-wrap items-center justify-center gap-x-8 gap-y-12 mt-8">
+                    <div class="gamify-step bg-[#06D6A0]">1. Crear Tarea</div>
+                    <div class="flow-arrow text-gray-400">→</div>
+                    <div class="gamify-step bg-[#118AB2]">2. Completar Tarea</div>
+                    <div class="flow-arrow text-gray-400">→</div>
+                    <div class="gamify-step bg-[#FFD166] text-[#073B4C]">3. Pengu Gana Vida ❤️</div>
+                    <div class="flow-arrow text-gray-400">→</div>
+                    <div class="gamify-step bg-[#FF6B6B]">4. Reiniciar Ciclo</div>
+                </div>
+            </div>
 
         </main>
-        
-        <!-- Tabla de alumnos fuera del contenedor principal para un diseño más limpio -->
-        <table class="w-full table-auto border-collapse mt-8 shadow-lg rounded-lg overflow-hidden" id="dbAlumnos-list">
-            <!-- El contenido de la tabla se generará dinámicamente -->
-            <thead class="bg-indigo-600 text-white">
-                <tr class="text-left">
-                    <th class="p-4">Nombre</th>
-                    <th class="p-4">Correo</th>
-                    <th class="p-4 hidden md:table-cell">Edad</th>
-                    <th class="p-4 hidden md:table-cell">Fecha de ingreso</th>
-                    <th class="p-4">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Aquí se insertarán las filas de la tabla con los datos de los alumnos -->
-            </tbody>
-        </table>
     </div>
 
-    <!-- Mensaje de alerta flotante -->
-    <div class="fixed bottom-4 right-4 p-4 rounded-lg shadow-lg text-white bg-green-500 hidden" id="mensaje-alerta">
-    </div>
+    <script>
+        const energeticPlayfulPalette = {
+            red: '#FF6B6B',
+            yellow: '#FFD166',
+            green: '#06D6A0',
+            blue: '#118AB2',
+            darkBlue: '#073B4C'
+        };
 
-    <!-- Script de funciones JS -->
-    <script type="text/javascript" src="js/funciones.js"></script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
 
+        const backendCtx = document.getElementById('backendChart').getContext('2d');
+        new Chart(backendCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Flask', 'Werkzeug', 'Jinja2', 'Gunicorn', 'SQLite3'],
+                datasets: [{
+                    label: 'Rol en el Backend',
+                    data: [10, 7, 8, 9, 8],
+                    backgroundColor: [
+                        energeticPlayfulPalette.green,
+                        energeticPlayfulPalette.blue,
+                        energeticPlayfulPalette.yellow,
+                        energeticPlayfulPalette.red,
+                        energeticPlayfulPalette.darkBlue
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: { display: false },
+                        grid: { display: false },
+                        border: { display: false }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                                weight: '600'
+                            },
+                            color: energeticPlayfulPalette.darkBlue
+                        },
+                        grid: { display: false },
+                        border: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const frontendCtx = document.getElementById('frontendChart').getContext('2d');
+        new Chart(frontendCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Estructura (HTML)', 'Estilo (Bootstrap)', 'Interactividad (JS)'],
+                datasets: [{
+                    label: 'Composición del Frontend',
+                    data: [30, 35, 35],
+                    backgroundColor: [
+                        energeticPlayfulPalette.blue,
+                        energeticPlayfulPalette.green,
+                        energeticPlayfulPalette.yellow
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: {
+                                size: 14
+                            },
+                            color: energeticPlayfulPalette.darkBlue
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

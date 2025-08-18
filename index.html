@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nicolás Fleitas | Profesional en TIC</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="text-gray-800">
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="text-2xl font-bold text-gray-900">
+          <a href="#">Nicolás Fleitas</a>
+        </div>
+        <div class="hidden md:flex space-x-6">
+          <a
+            href="#about"
+            class="text-gray-600 hover:text-blue-600 transition duration-300"
+            >Acerca de Mí</a
+          >
+          <a
+            href="#services"
+            class="text-gray-600 hover:text-blue-600 transition duration-300"
+            >Servicios</a
+          >
+          <a
+            href="#skills"
+            class="text-gray-600 hover:text-blue-600 transition duration-300"
+            >Habilidades</a
+          >
+          <a
+            href="#contact"
+            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300"
+            >Contacto</a
+          >
+        </div>
+        <div class="md:hidden">
+          <button id="menu-btn" class="text-gray-800">
+            <i data-lucide="menu"></i>
+          </button>
+        </div>
+      </nav>
+
+      <div id="mobile-menu" class="hidden md:hidden bg-white py-2">
+        <a href="#about" class="block px-6 py-2 text-gray-600 hover:bg-gray-100"
+          >Acerca de Mí</a
+        >
+        <a
+          href="#services"
+          class="block px-6 py-2 text-gray-600 hover:bg-gray-100"
+          >Servicios</a
+        >
+        <a
+          href="#skills"
+          class="block px-6 py-2 text-gray-600 hover:bg-gray-100"
+          >Habilidades</a
+        >
+        <a
+          href="#contact"
+          class="block px-6 py-2 text-gray-600 hover:bg-gray-100"
+          >Contacto</a
+        >
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="bg-white py-20 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+          <h1
+            class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight"
+          >
+            Nicolás Fleitas
+          </h1>
+          <p class="mt-4 text-xl md:text-2xl font-medium text-blue-600">
+            Profesional en Tecnologías de la Información y Comunicación
+          </p>
+          <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-600">
+            Apasionado por la tecnología, especializado en ofrecer soluciones
+            informáticas eficientes y un soporte técnico de alta calidad.
+          </p>
+          <a
+            href="#contact"
+            class="mt-8 inline-block bg-blue-600 text-white text-lg font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg"
+          >
+            Contactar Ahora
+          </a>
+        </div>
+      </section>
+
+      <section id="about" class="py-20">
+        <div class="container mx-auto px-6">
+          <h2 class="text-3xl font-bold text-center mb-12">Acerca de Mí</h2>
+          <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+            <p class="text-lg text-gray-700 leading-relaxed">
+              Soy un Técnico Superior en TIC apasionado por la tecnología y por
+              ofrecer una atención al cliente de primer nivel. Mi principal
+              motivación es encontrar soluciones eficientes e innovadoras para
+              los desafíos informáticos, asegurando que los usuarios no solo
+              resuelvan sus problemas, sino que también se sientan cómodos y
+              seguros con la tecnología que utilizan.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+          <h2 class="text-3xl font-bold text-center mb-12">
+            Servicios y Especialidades
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div
+              class="bg-gray-50 p-6 rounded-lg text-center card-hover border border-gray-200"
+            >
+              <div
+                class="inline-block p-4 bg-blue-100 text-blue-600 rounded-full mb-4"
+              >
+                <i data-lucide="shield-check" class="w-8 h-8"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Soporte Técnico Integral</h3>
+              <p class="text-gray-600">
+                Atención completa a usuarios, garantizando una respuesta rápida
+                y efectiva a cualquier incidencia.
+              </p>
+            </div>
+
+            <div
+              class="bg-gray-50 p-6 rounded-lg text-center card-hover border border-gray-200"
+            >
+              <div
+                class="inline-block p-4 bg-blue-100 text-blue-600 rounded-full mb-4"
+              >
+                <i data-lucide="cpu" class="w-8 h-8"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Optimización de Sistemas</h3>
+              <p class="text-gray-600">
+                Instalación, configuración y mantenimiento para asegurar el
+                máximo rendimiento de equipos y software.
+              </p>
+            </div>
+
+            <div
+              class="bg-gray-50 p-6 rounded-lg text-center card-hover border border-gray-200"
+            >
+              <div
+                class="inline-block p-4 bg-blue-100 text-blue-600 rounded-full mb-4"
+              >
+                <i data-lucide="folder-git-2" class="w-8 h-8"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Gestión de Infraestructura</h3>
+              <p class="text-gray-600">
+                Administración de inventarios, estaciones de trabajo y Active
+                Directory para un entorno organizado.
+              </p>
+            </div>
+
+            <div
+              class="bg-gray-50 p-6 rounded-lg text-center card-hover border border-gray-200"
+            >
+              <div
+                class="inline-block p-4 bg-blue-100 text-blue-600 rounded-full mb-4"
+              >
+                <i data-lucide="database" class="w-8 h-8"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Administración de BBDD</h3>
+              <p class="text-gray-600">
+                Estrategias de respaldo y recuperación de datos críticos con SQL
+                para garantizar la integridad de la información.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <h2 class="text-3xl font-bold text-center mb-12">Mis Habilidades</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            <div>
+              <h3 class="text-2xl font-semibold text-center mb-6">
+                Habilidades Técnicas
+              </h3>
+              <div class="flex flex-wrap justify-center gap-3">
+                <span
+                  class="skill-tag bg-blue-100 text-blue-800 text-md font-medium px-4 py-2 rounded-full"
+                  >Windows y Linux</span
+                >
+                <span
+                  class="skill-tag bg-blue-100 text-blue-800 text-md font-medium px-4 py-2 rounded-full"
+                  >SQL</span
+                >
+                <span
+                  class="skill-tag bg-blue-100 text-blue-800 text-md font-medium px-4 py-2 rounded-full"
+                  >Python</span
+                >
+                <span
+                  class="skill-tag bg-blue-100 text-blue-800 text-md font-medium px-4 py-2 rounded-full"
+                  >Office 365</span
+                >
+                <span
+                  class="skill-tag bg-blue-100 text-blue-800 text-md font-medium px-4 py-2 rounded-full"
+                  >Redes y Seguridad</span
+                >
+                <span
+                  class="skill-tag bg-blue-100 text-blue-800 text-md font-medium px-4 py-2 rounded-full"
+                  >Active Directory</span
+                >
+                <span
+                  class="skill-tag bg-blue-100 text-blue-800 text-md font-medium px-4 py-2 rounded-full"
+                  >Hardware</span
+                >
+              </div>
+            </div>
+            <div>
+              <h3 class="text-2xl font-semibold text-center mb-6">
+                Aptitudes Personales
+              </h3>
+              <div class="flex flex-wrap justify-center gap-3">
+                <span
+                  class="skill-tag bg-green-100 text-green-800 text-md font-medium px-4 py-2 rounded-full"
+                  >Proactividad</span
+                >
+                <span
+                  class="skill-tag bg-green-100 text-green-800 text-md font-medium px-4 py-2 rounded-full"
+                  >Rápido aprendizaje</span
+                >
+                <span
+                  class="skill-tag bg-green-100 text-green-800 text-md font-medium px-4 py-2 rounded-full"
+                  >Trabajo en equipo</span
+                >
+                <span
+                  class="skill-tag bg-green-100 text-green-800 text-md font-medium px-4 py-2 rounded-full"
+                  >Comunicación efectiva</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="py-20">
+        <div class="container mx-auto px-6 text-center">
+          <p class="text-xl text-gray-600 mb-8">
+            Me encantaría conocer tus necesidades y ver cómo puedo ayudarte.
+            ¡Hablemos!
+          </p>
+          <div
+            class="flex flex-col md:flex-row justify-center items-center gap-8 text-lg"
+          >
+            <a
+              href="mailto:nicolasfleitas@outlook.com"
+              class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition duration-300"
+            >
+              <i data-lucide="mail"></i>
+              nicolasfleitas@outlook.com
+            </a>
+            <a
+              href="tel:+595981276655"
+              class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition duration-300"
+            >
+              <i data-lucide="phone"></i>
+              <a href="https://wa.me/+595981276655">(0981) 276655</a>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/nicolasfleitas"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition duration-300"
+            >
+              <i data-lucide="linkedin"></i>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-6">
+      <div class="container mx-auto px-6 text-center">
+        <p>
+          &copy; <span id="current-year"></span> Nicolás Fleitas. Todos los
+          derechos reservados.
+        </p>
+      </div>
+    </footer>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
